@@ -1,6 +1,55 @@
 import numpy as np
 
 
+def predict_from_model_data(sample, model_data):
+    header = model_data["header"]
+
+    kernel_type = header["kernel_type"]
+
+    if kernel_type == "polynomial":
+        kernel = "poly"
+    elif kernel_type == "gaussian":
+        kernel = "rbf"
+    else:
+        kernel = kernel_type
+
+    classes = header["label"]
+    intercepts = list([-rho for rho in header["rho"]])
+    number_of_support_vectors = header["nr_sv"]
+
+    if header.get("break_ties") == 1:
+        break_ties = True
+    else:
+        break_ties = False
+
+    gamma = header.get("gamma")
+    independent_term = header.get("coef0")
+    degree = header.get("degree")
+
+    if "decision_function_shape" in header:
+        decision_function_shape = header["decision_function_shape"]
+    else:
+        decision_function_shape = "ovr"
+
+    dual_coeffs = model_data["dual_coeffs"]
+    support_vectors = model_data["support_vectors"]
+
+    return predict(
+        sample,
+        kernel,
+        classes,
+        support_vectors,
+        intercepts,
+        number_of_support_vectors,
+        dual_coeffs,
+        break_ties,
+        gamma,
+        independent_term,
+        degree,
+        decision_function_shape,
+    )
+
+
 def predict(
     sample,
     kernel,

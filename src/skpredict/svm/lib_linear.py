@@ -1,6 +1,22 @@
 from sys import float_info
 
 
+def predict_from_model_data(sample, model_data):
+    header = model_data["header"]
+    classes = header["label"]
+    multi_class_strategy = header["multi_class_strategy"]
+    intercepts = model_data["intercepts"]
+    coefficients = model_data["coefficients"]
+
+    return predict(
+        sample,
+        classes,
+        intercepts,
+        coefficients,
+        multi_class_strategy,
+    )
+
+
 def predict(sample, classes, intercepts, coefficients, multi_class_strategy):
     if multi_class_strategy is not None and multi_class_strategy != "ovr":
         raise ValueError(
