@@ -2,11 +2,11 @@ name: run-tests
 on:
   create:
     tags:
-      - "v[0-9].[0-9]+.[0-9]+-dev"
+      - "v[0-9].[0-9]+.[0-9]+"
 jobs:
   test:
     uses: mdietrichstein/skpredict/.github/workflows/run-tests.yml@main
-  publish-on-test-pypi:
+  publish-on-pypi:
     needs: test
     uses: mdietrichstein/skpredict/.github/workflows/publish-pypi.yml@main
     with:
