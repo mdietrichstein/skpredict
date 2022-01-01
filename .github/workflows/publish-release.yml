@@ -2,7 +2,7 @@ name: run-tests
 on:
   create:
     tags:
-      - "v[0-9].[0-9]+.[0-9]+"
+      - "v[0-9].[0-9]+.[0-9]+$"
 jobs:
   test:
     uses: mdietrichstein/skpredict/.github/workflows/run-tests.yml@main
