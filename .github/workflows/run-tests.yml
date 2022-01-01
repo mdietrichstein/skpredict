@@ -1,12 +1,14 @@
 name: run-tests
 on: [push]
 jobs:
-  run-test-matrix:
-    runs-on: ubuntu-20.04
+  setup:
+    - run: sudo add-apt-repository -y ppa:deadsnakes/ppa
+    - run: sudo apt-get update
+    - run: sudo apt install -y python3.6 python3.7 python3.8 python3.9
+    - uses: actions/checkout@v2
+    - run: pip install -r requirements.txt
+    - run: pip install -r dev_requirements.txt
+  test:
+    needs: setup
     steps:
-      - run: sudo add-apt-repository -y ppa:deadsnakes/ppa
-      - run: sudo apt-get update
-      - run: sudo apt install -y python3.6 python3.7 python3.8 python3.9
-      - uses: actions/checkout@v2
-      - run: pip install -r dev_requirements.txt
       - run: make test-matrix
