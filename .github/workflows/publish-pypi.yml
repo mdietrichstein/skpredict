@@ -19,5 +19,5 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pip install -r dev_requirements.txt
       - run: python setup.py sdist bdist_wheel
-      - run: twine upload -u "${{ inputs.username }}" -p "${{ secrets.password }}"  --repository-url ${{ inputs.repository }} dist/
+      - run: twine upload -u "${{ inputs.username }}" -p "${{ secrets.password }}"  --repository-url ${{ inputs.repository }} dist/*
 
