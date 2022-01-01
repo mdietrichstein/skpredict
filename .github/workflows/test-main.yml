@@ -1,0 +1,11 @@
+name: run-tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    uses: mdietrichstein/skpredict/.github/workflows/run-tests.yml@main
