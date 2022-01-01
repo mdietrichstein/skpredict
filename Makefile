@@ -18,7 +18,7 @@ init:
 
 lint:
 	$(FLAKE8) src/ tests/
-	$(BANDIT) -r src/ tests/
+	$(BANDIT) -c .bandit.yml -r src/ tests/
 
 format-code:
 	$(BLACK) src/
