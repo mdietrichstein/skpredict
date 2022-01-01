@@ -4,14 +4,13 @@ on:
     tags:
       - "v[0-9].[0-9]+.[0-9]+-dev"
 jobs:
-  release-on-test-pypi:
-    test:
-      uses: mdietrichstein/skpredict/.github/workflows/run-tests.yml@main
-    publish:
-      needs: test
-      uses: mdietrichstein/skpredict/.github/workflows/publish-pypi.yml@main
-      with:
-        username: mdietrichstein
-        repository: https://test.pypi.org/legacy/
-      secrets:
-        password: ${{ secrets.TEST_PYPI_PASSWORD }}
+  test:
+    uses: mdietrichstein/skpredict/.github/workflows/run-tests.yml@main
+  publish:
+    needs: test
+    uses: mdietrichstein/skpredict/.github/workflows/publish-pypi.yml@main
+    with:
+      username: mdietrichstein
+      repository: https://test.pypi.org/legacy/
+    secrets:
+      password: ${{ secrets.TEST_PYPI_PASSWORD }}
