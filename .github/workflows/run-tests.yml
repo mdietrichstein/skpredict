@@ -1,5 +1,11 @@
 name: run-tests
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   test-matrix:
     runs-on: ubuntu-20.04
