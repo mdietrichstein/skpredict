@@ -3,6 +3,7 @@ PYTEST ?= pytest
 BANDIT ?= bandit
 FLAKE8 ?= flake8
 BLACK ?= black
+TOX ?= tox
 PIP ?= pip
 
 all: clean lint test
@@ -25,5 +26,8 @@ format-code:
 
 test:
 	PYTHONPATH=./src $(PYTEST)
+
+test-matrix:
+	$(TOX) -r
 
 .PHONY: clean init test
