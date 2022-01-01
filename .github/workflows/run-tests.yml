@@ -1,7 +1,7 @@
 name: run-tests
 on: workflow_call
 jobs:
-  test-matrix:
+  run-tox-tests:
     runs-on: ubuntu-20.04
     steps:
       - run: sudo add-apt-repository -y ppa:deadsnakes/ppa
