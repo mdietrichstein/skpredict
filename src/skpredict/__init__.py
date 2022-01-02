@@ -15,4 +15,4 @@ __all__ = [
     "libsvm_predict_from_model_data",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
