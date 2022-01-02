@@ -1,4 +1,4 @@
-name: run-tests
+name: publish-release
 on: workflow_dispatch
 jobs:
   test:
